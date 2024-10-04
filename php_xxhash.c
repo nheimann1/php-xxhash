@@ -82,10 +82,14 @@ PHP_FUNCTION(xxhash64Unsigned)
 	RETURN_STRING(numberAsAString);
 }
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_xxhash, 0, 0, 1)
+	ZEND_ARG_TYPE_INFO(0, data, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
 const zend_function_entry xxhash_functions[] = {
-	ZEND_FE(xxhash32, NULL)
-	ZEND_FE(xxhash64, NULL)
-	ZEND_FE(xxhash64Unsigned, NULL)
+	ZEND_FE(xxhash32, arginfo_xxhash)
+	ZEND_FE(xxhash64, arginfo_xxhash)
+	ZEND_FE(xxhash64Unsigned, arginfo_xxhash)
 	PHP_FE_END
 };
 
